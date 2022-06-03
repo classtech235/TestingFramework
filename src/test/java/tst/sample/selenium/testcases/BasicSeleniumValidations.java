@@ -97,3 +97,4 @@ public class BasicSeleniumValidations {
         driver.quit();
     }
 }
+
