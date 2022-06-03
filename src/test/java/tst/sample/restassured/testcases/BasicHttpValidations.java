@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import java.io.File;
 import java.io.FileNotFoundException;
+
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -25,9 +26,9 @@ public class BasicHttpValidations {
         given()
                 .contentType(ContentType.JSON)
                 .body(regfile)
-                .when()
+        .when()
                 .post("/api/register")
-                .then()
+        .then()
                 .log()
                 .body()
                 .assertThat()
@@ -40,13 +41,12 @@ public class BasicHttpValidations {
         given()
                 .contentType(ContentType.JSON)
                 .body(logfile)
-                .when()
+        .when()
                 .post("/api/login")
-                .then()
+        .then()
                 .log()
                 .body()
                 .assertThat()
-
                 .statusCode(200);
     }
 
@@ -54,9 +54,9 @@ public class BasicHttpValidations {
     public void listUsers(){
         given()
                 .contentType(ContentType.JSON)
-                .when()
+        .when()
                 .get("/api/unknown")
-                .then()
+        .then()
                 .body("data[0].name", is(equalTo("cerulean")),
                         "data[0].id", is(equalTo(1)));
 
